@@ -1,9 +1,8 @@
 import random
 class TicTacToe:
     def __init__(self):
-        self.board =[' '] * 10
-        #self.player_turn = random.choice(["X","O"])
-        self.player_turn = "X"
+        self.board = [' '] * 10
+        self.player_turn = random.choice(["X","O"])
     
     def show_board(self):
         print("\n")
@@ -41,27 +40,39 @@ class TicTacToe:
         while True:
             self.show_board()
             try:
-                user_input = int(input("Enter a numebr between 1-9: "))
+                user_input = int(input(f"Player {self.player_turn}, Enter a number between 1-9: "))
             except ValueError:
-                print("Enter A Number!! (between 1-9)")
+                print("Enter a -Number-!! (between 1-9)")
                 continue
             
-            if self.board[user_input] and user_input in range(1,10):
-                self.show_board()
+            if user_input in range(1,10) and self.board[user_input] == ' ':
                 self.fill_board(self.player_turn, user_input)
                 
                 if self.is_board_fill() and self.has_player_won is False:
-                    self.show_board()
-                    print("Draw!!")
-                    break
-                
+                        self.show_board()
+                        print("Draw!!")
+                        play_again = input("Do you want to play again? (yes for play, anything else for quit.\n)")
+                        if play_again.lower() == "yes":
+                            self.board = [' '] * 10
+                            continue
+                        else:
+                            break
+                    
                 elif self.has_player_won(self.player_turn):
-                    self.show_board()
-                    print(f"{self.player_turn} has won the game!!")
-                    break
-                
+                        self.show_board()
+                        print(f"{self.player_turn} has won the game!!")
+                        play_again = input("Do you want to play again? (yes for play, anything else for quit.\n)")
+                        if play_again.lower() == "yes":
+                            self.board = [' '] * 10
+                            continue
+                        else:
+                            break
+                    
                 self.change_turn()
                 
             else:
-                print("Invalid Cell Number, Try again!")
-                
+                print("\nInvalid cell number, Try again!\n( Out of range (1-9) or chose an already filled cell.)")
+
+if __name__ == "__main__":
+    game = TicTacToe()
+    game.start()
