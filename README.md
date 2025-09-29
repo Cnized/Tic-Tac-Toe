@@ -51,8 +51,7 @@ This version runs in the **terminal/command line**, allowing two players to play
 ```
 tic-tac-toe/
 │── src/
-│   └── game.py      # Game logic
-│── main.py          # Entry point
+│   └── main.py      # Game logic
 │── README.md        # Documentation
 ```
 
