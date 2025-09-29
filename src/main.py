@@ -41,7 +41,7 @@ class TicTacToe:
         while True:
             self.show_board()
             try:
-                user_input = int(input(f"Player {self.player_turn}, Enter a number between 1-9: "))
+                user_input = int(input(f"Player {self.player_turn}, Enter a number (1-9): "))
                 if user_input not in range(1, 10):
                     print("Number out of range. Choose 1-9.")
                     continue
